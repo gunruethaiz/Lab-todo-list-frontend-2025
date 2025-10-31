@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>🎯 Test Page</h1>
+    <p>หากเห็นข้อความนี้แสดงว่าเซิร์ฟเวอร์ทำงานได้</p>
+    <div style="padding: 20px; background: #e0e0e0; margin: 20px 0; border-radius: 5px;">
+        <p>✅ HTML ทำงานได้</p>
+        <p>⏰ เวลา: <span id="time"></span></p>
+    </div>
+    
+    <script>
+        document.getElementById('time').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
