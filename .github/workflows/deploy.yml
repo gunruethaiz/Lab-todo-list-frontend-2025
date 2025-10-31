@@ -71,14 +71,30 @@ jobs:
       
       - name: Show GitHub Pages URL
         run: |
-          echo "🎉 Deployment successful!"
+          echo "========================================="
+          echo "🎉 DEPLOYMENT SUCCESSFUL! 🎉"
+          echo "========================================="
+          echo ""
           echo "📱 Your Todo App is now live at:"
-          echo "🔗 https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          echo "🔗 https://gunruethaiz.github.io/todo-frontend/"
           echo ""
           echo "✨ Features available:"
-          echo "  - ✅ Add, edit, delete todos"
-          echo "  - 💾 Local Storage persistence"
-          echo "  - 📊 Task statistics"
-          echo "  - 🎨 Beautiful UI with animations"
+          echo "  ✅ Add, edit, delete todos"
+          echo "  💾 Local Storage persistence" 
+          echo "  📊 Task statistics"
+          echo "  🎨 Beautiful UI with animations"
           echo ""
           echo "🚀 Enjoy your Todo List app!"
+          echo "========================================="
+          
+          # Add to GitHub Actions summary
+          echo "## 🎉 Deployment Successful!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📱 Your Todo App is live:" >> $GITHUB_STEP_SUMMARY
+          echo "[🔗 https://gunruethaiz.github.io/todo-frontend/](https://gunruethaiz.github.io/todo-frontend/)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✨ Features:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Add, edit, delete todos" >> $GITHUB_STEP_SUMMARY
+          echo "- 💾 Local Storage persistence" >> $GITHUB_STEP_SUMMARY
+          echo "- 📊 Task statistics" >> $GITHUB_STEP_SUMMARY
+          echo "- 🎨 Beautiful UI with animations" >> $GITHUB_STEP_SUMMARY
