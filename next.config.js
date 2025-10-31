@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const path = require('path');
 const repoName = 'todo-frontend';
 const isDev = process.env.NODE_ENV !== 'production';
 
