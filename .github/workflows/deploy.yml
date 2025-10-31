@@ -39,6 +39,18 @@ jobs:
           NODE_ENV: production
         run: npm run build
       
+      - name: Show Development Info
+        run: |
+          echo "========================================="
+          echo "🔧 BUILD COMPLETED SUCCESSFULLY! 🔧"
+          echo "========================================="
+          echo ""
+          echo "💻 For local development:"
+          echo "🔗 http://localhost:3000/"
+          echo ""
+          echo "📦 Production build ready for deployment"
+          echo "========================================="
+      
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -69,14 +81,15 @@ jobs:
           publish_dir: ./out
           force_orphan: true
       
-      - name: Show GitHub Pages URL
+      - name: Show Deployment URLs
         run: |
           echo "========================================="
           echo "🎉 DEPLOYMENT SUCCESSFUL! 🎉"
           echo "========================================="
           echo ""
           echo "📱 Your Todo App is now live at:"
-          echo "🔗 https://gunruethaiz.github.io/todo-frontend/"
+          echo "🌐 Production: https://gunruethaiz.github.io/todo-frontend/"
+          echo "💻 Development: http://localhost:3000/"
           echo ""
           echo "✨ Features available:"
           echo "  ✅ Add, edit, delete todos"
@@ -90,8 +103,9 @@ jobs:
           # Add to GitHub Actions summary
           echo "## 🎉 Deployment Successful!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### 📱 Your Todo App is live:" >> $GITHUB_STEP_SUMMARY
-          echo "[🔗 https://gunruethaiz.github.io/todo-frontend/](https://gunruethaiz.github.io/todo-frontend/)" >> $GITHUB_STEP_SUMMARY
+          echo "### 📱 Your Todo App URLs:" >> $GITHUB_STEP_SUMMARY
+          echo "- 🌐 **Production**: [https://gunruethaiz.github.io/todo-frontend/](https://gunruethaiz.github.io/todo-frontend/)" >> $GITHUB_STEP_SUMMARY
+          echo "- 💻 **Development**: \`http://localhost:3000/\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### ✨ Features:" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Add, edit, delete todos" >> $GITHUB_STEP_SUMMARY
