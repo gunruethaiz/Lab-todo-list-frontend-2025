@@ -120,28 +120,74 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #e0e7ff 0%, #fdf2f8 50%, #dbeafe 100%)',
+      padding: '32px 16px',
+      fontFamily: 'system-ui, -apple-system, sans-serif'
+    }}>
+      <div style={{
+        maxWidth: '1024px',
+        margin: '0 auto'
+      }}>
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <div className="text-5xl animate-bounce">✨</div>
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+        <div style={{textAlign: 'center', marginBottom: '32px'}}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '12px',
+            marginBottom: '12px'
+          }}>
+            <div style={{
+              fontSize: '48px',
+              animation: 'bounce 2s infinite'
+            }}>✨</div>
+            <h1 style={{
+              fontSize: '48px',
+              fontWeight: 'bold',
+              background: 'linear-gradient(to right, #9333ea, #ec4899)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              margin: 0
+            }}>
               My Todo List
             </h1>
-            <div className="text-5xl animate-bounce">📝</div>
+            <div style={{
+              fontSize: '48px',
+              animation: 'bounce 2s infinite 0.5s'
+            }}>📝</div>
           </div>
-          <p className="text-gray-600 text-lg mb-4">Organize your tasks beautifully</p>
+          <p style={{
+            color: '#6b7280',
+            fontSize: '18px',
+            marginBottom: '16px'
+          }}>
+            Organize your tasks beautifully
+          </p>
           
           {/* API Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium 
-                        shadow-sm bg-white border-2 border-gray-200">
-            <div className={`w-3 h-3 rounded-full ${
-              apiStatus === 'healthy' ? 'bg-green-500 animate-pulse' :
-              apiStatus === 'unhealthy' ? 'bg-red-500' :
-              'bg-yellow-500 animate-pulse'
-            }`} />
-            <span className="text-gray-700">
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '8px 16px',
+            borderRadius: '9999px',
+            fontSize: '14px',
+            fontWeight: '500',
+            backgroundColor: 'white',
+            border: '2px solid #e5e7eb',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+          }}>
+            <div style={{
+              width: '12px',
+              height: '12px',
+              borderRadius: '50%',
+              backgroundColor: apiStatus === 'healthy' ? '#10b981' :
+                              apiStatus === 'unhealthy' ? '#ef4444' : '#f59e0b',
+              animation: apiStatus === 'checking' ? 'pulse 2s infinite' : 'none'
+            }} />
+            <span style={{color: '#374151'}}>
               {apiStatus === 'healthy' ? '🟢 Local Storage Connected' :
                apiStatus === 'unhealthy' ? '🔴 Local Storage Error' :
                '🟡 Checking Local Storage...'}
@@ -151,14 +197,39 @@ export default function Home() {
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-lg shadow-sm">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">⚠️</span>
+          <div style={{
+            marginBottom: '24px',
+            backgroundColor: '#fef2f2',
+            borderLeft: '4px solid #ef4444',
+            padding: '16px',
+            borderRadius: '8px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}>
+              <span style={{fontSize: '24px'}}>⚠️</span>
               <div>
-                <p className="text-red-800 font-medium">{error}</p>
+                <p style={{
+                  color: '#991b1b',
+                  fontWeight: '500',
+                  margin: 0
+                }}>
+                  {error}
+                </p>
                 <button 
                   onClick={() => { checkHealth(); loadTodos(); }}
-                  className="text-red-600 underline text-sm mt-1 hover:text-red-800"
+                  style={{
+                    color: '#dc2626',
+                    textDecoration: 'underline',
+                    fontSize: '14px',
+                    marginTop: '4px',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
                 >
                   Try again
                 </button>
@@ -182,15 +253,37 @@ export default function Home() {
         />
 
         {/* Footer */}
-        <div className="mt-12 text-center text-gray-500 text-sm">
-          <p className="mb-2">
-            Made with <span className="text-red-500 animate-pulse">❤️</span> using Next.js + Local Storage
+        <div style={{
+          marginTop: '48px',
+          textAlign: 'center',
+          color: '#6b7280',
+          fontSize: '14px'
+        }}>
+          <p style={{marginBottom: '8px'}}>
+            Made with <span style={{
+              color: '#ef4444',
+              animation: 'pulse 2s infinite'
+            }}>❤️</span> using Next.js + Local Storage
           </p>
-          <p className="text-xs text-gray-400">
+          <p style={{
+            fontSize: '12px',
+            color: '#9ca3af'
+          }}>
             Data Storage: Browser Local Storage | All data is saved locally
           </p>
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      `}</style>
     </div>
   );
 }

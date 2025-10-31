@@ -38,35 +38,33 @@ export default function AddTodo({ onAdd, loading }) {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-6 mb-8 border-2 border-purple-100">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-        <span className="text-3xl">➕</span>
+    <div className="card">
+      <h2 style={{fontSize: '24px', fontWeight: 'bold', color: '#374151', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px'}}>
+        <span style={{fontSize: '32px'}}>➕</span>
         Add New Task
       </h2>
       
       {error && (
-        <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+        <div style={{marginBottom: '16px', background: '#fef2f2', border: '1px solid #fecaca', color: '#991b1b', padding: '12px', borderRadius: '6px'}}>
           {error}
         </div>
       )}
       
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
         {/* Title Input */}
         <div>
-          <label className="block text-gray-700 font-semibold mb-2 text-sm uppercase tracking-wide">
+          <label style={{display: 'block', color: '#374151', fontWeight: '600', marginBottom: '8px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.5px'}}>
             Task Title *
           </label>
           <input
             type="text"
             value={title}
             onChange={(e) => {
-              console.log('Title changed:', e.target.value); // ← Debug log
+              console.log('Title changed:', e.target.value);
               setTitle(e.target.value);
             }}
             placeholder="What do you need to do?"
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 
-                     focus:ring-4 focus:ring-purple-100 outline-none transition text-gray-800
-                     placeholder-gray-400 disabled:bg-gray-100 disabled:cursor-not-allowed"
+            className="input"
             disabled={submitting || loading}
             autoFocus
           />
@@ -74,7 +72,7 @@ export default function AddTodo({ onAdd, loading }) {
 
         {/* Description Input */}
         <div>
-          <label className="block text-gray-700 font-semibold mb-2 text-sm uppercase tracking-wide">
+          <label style={{display: 'block', color: '#374151', fontWeight: '600', marginBottom: '8px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.5px'}}>
             Description (Optional)
           </label>
           <textarea
@@ -82,9 +80,8 @@ export default function AddTodo({ onAdd, loading }) {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Add more details..."
             rows="3"
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 
-                     focus:ring-4 focus:ring-purple-100 outline-none transition resize-none text-gray-800
-                     placeholder-gray-400 disabled:bg-gray-100 disabled:cursor-not-allowed"
+            className="input"
+            style={{resize: 'none'}}
             disabled={submitting || loading}
           />
         </div>
@@ -93,28 +90,32 @@ export default function AddTodo({ onAdd, loading }) {
         <button
           type="submit"
           disabled={submitting || loading}
-          onClick={(e) => console.log('Button clicked', e)} // ← Debug log
-          className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold 
-                   py-4 px-6 rounded-xl hover:from-purple-700 hover:to-pink-700 
-                   disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed
-                   transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200
-                   shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+          className="btn-primary"
+          style={{
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            opacity: submitting || loading ? 0.5 : 1,
+            cursor: submitting || loading ? 'not-allowed' : 'pointer'
+          }}
         >
           {submitting ? (
             <>
-              <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin" />
+              <div style={{width: '20px', height: '20px', border: '3px solid white', borderTop: '3px solid transparent', borderRadius: '50%', animation: 'spin 1s linear infinite'}} />
               Adding...
             </>
           ) : (
             <>
-              <span className="text-xl">✨</span>
+              <span style={{fontSize: '20px'}}>✨</span>
               Add Task
             </>
           )}
         </button>
         
         {/* Debug Info */}
-        <div className="text-xs text-gray-400 mt-2">
+        <div style={{fontSize: '12px', color: '#9ca3af', marginTop: '8px'}}>
           Debug: Title length = {title.length}, Submitting = {submitting ? 'true' : 'false'}
         </div>
       </form>
