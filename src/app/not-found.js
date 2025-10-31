@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+// Custom 404 page with Next.js Link component
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100">
