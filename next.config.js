@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
 const repoName = 'todo-frontend';
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -13,4 +12,4 @@ const nextConfig = {
   trailingSlash: true,
 };
 
-module.exports = nextConfig;
+export default nextConfig;
